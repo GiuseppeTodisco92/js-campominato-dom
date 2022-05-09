@@ -9,7 +9,10 @@ L’utente non può inserire più volte lo stesso numero.
 Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
 
 La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
+
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
+
+
 BONUS: (da fare solo se funziona tutto il resto)
 all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
 con difficoltà 0 => tra 1 e 100
@@ -60,10 +63,10 @@ while(i < 20 - nBombs){
 
     //Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
 
-    //controllo che il numero selezionato non sia presente nella lista 
+    //controllo che il numero selezionato non sia presente nella lista delle bombe
     if (bombs.includes(num) === true){
-        alert("mi dispiace hai beccato una bomba !!! hai perso");
-        break;
+        alert("mi dispiace hai beccato una bomba !!! hai perso - premere ok per riavviare");
+        location.reload();
     }
 
     if(selectNumbers.includes(num) === false){
@@ -73,6 +76,14 @@ while(i < 20 - nBombs){
     }else{
         alert("hai già inserito questo numero")
     }  
+}
+
+// contatore dei tentativi
+console.log("Numero di tentativi eseguiti =",i);
+
+// se il numero di tentativi corrisponde al numero di possibilità vuol dire che hai completato il gioco con successo
+if (i === 20 - nBombs){
+    alert("Complimenti hai vinto !")
 }
 
 

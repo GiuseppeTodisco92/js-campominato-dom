@@ -73,8 +73,9 @@ while(i < difficult - nBombs){
 
     //controllo che il numero selezionato non sia presente nella lista delle bombe
     if (bombs.includes(num) === true){
+        
         alert("mi dispiace hai beccato una bomba !!! hai perso - premere ok per riavviare");
-        location.reload();
+        break;
     }
     // se il numero non è presente nella lista dei numeri inseriti lo pusha
     if(selectNumbers.includes(num) === false){

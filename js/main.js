@@ -7,6 +7,7 @@ In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero all
 L’utente non può inserire più volte lo stesso numero.
 
 Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
+
 La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 BONUS: (da fare solo se funziona tutto il resto)
@@ -56,7 +57,15 @@ let selectNumbers = []; // utilizzo un array per prendere nota dei numeri già i
 //condizione while per fare inserire all'utente N numeri meno il numero di bombe
 while(i < 20 - nBombs){
     const num = Number(prompt("inserisci un numero"));
-    
+
+    //Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
+
+    //controllo che il numero selezionato non sia presente nella lista 
+    if (bombs.includes(num) === true){
+        alert("mi dispiace hai beccato una bomba !!! hai perso");
+        break;
+    }
+
     if(selectNumbers.includes(num) === false){
         selectNumbers.push(num);
         console.log(selectNumbers);

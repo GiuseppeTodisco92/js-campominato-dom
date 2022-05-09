@@ -47,11 +47,11 @@ do{
 
     //determino il grado di difficoltà
     if (level === 0){
-        difficult = 20;
+        difficult = 100;
     } else if (level === 1){
-        difficult = 19;
+        difficult = 80;
     } else if (level === 2){
-        difficult = 18;
+        difficult = 50;
     }
 
 }while( level != 0 && level !=1 && level !=2 )

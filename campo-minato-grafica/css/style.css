@@ -1,0 +1,16 @@
+.btn_custom, .option {
+    padding: 0px 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 12px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.background_main{
+    background-color: #7fffd4;
+}
+

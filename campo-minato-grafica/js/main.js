@@ -76,42 +76,22 @@
 // if (i === levelSelect){
 //     alert("Complimenti hai vinto !")
 // }
-/*--------------
-    FUNCTIONS
-----------------*/ 
 
-// GENERA NUMERI RANDOMICI 
-function randomInteger(min,max){
-    return Math.floor(Math.random()* (max - min + 1)) +1 ;
-}
-function refreshPage() {
-    location.reload();
-}
 
 
 
 /*--------------
     MAIN
 ----------------*/ 
-
-
-let level = document.getElementById("level");
-let options = level.options;
+//!creare la selezione delle difficoltà
 const playBtn = document.querySelector(".btn_custom");
 const boxList = document.querySelector(".box_square");
-let difficult = 100; //da sistemare aggiugnere i livelli
-
-
-
-
-playBtn.addEventListener("click", function refreshPage() {
-    location.reload();
-}
-);
-// creazione bombe
 let bombs = [];
 const nBombs = 16;
-const levelSelect = difficult - nBombs;
+let difficult = 0; //da sistemare aggiugnere i livelli
+let possiblity = difficult - nBombs;
+// creazione bombe
+level();
 while( bombs.length < nBombs){
     let bomb = randomInteger(1,100);
     if ( bombs.includes(bomb) === false ){
@@ -119,6 +99,11 @@ while( bombs.length < nBombs){
     } 
 }
 console.log(bombs)
+
+playBtn.addEventListener("click", function refreshPage() {
+    location.reload();
+}
+);
 
 let point = document.querySelector(".point");
 let result = document.querySelector(".result")
@@ -132,23 +117,52 @@ for (let i=1 ; i <= difficult ; i++){
     number.push(i);
     boxList.append(box);
     point.innerText = score;
+    
     box.addEventListener("click", function bomb(){
         if(number.includes(i) != bombs.includes(i)){
             box.style.backgroundColor = "green";
              score += 100;
              point.innerText = score;
+             if(score/100 === possiblity){
+                 alert("hai vinto");
+                 refreshPage();
+             }
         }
         else if(bombs.includes(i)){
             box.style.backgroundColor = "red";
-            result.innerText = "Hai beccato una bomba ! play per riavviare! ";
+            result.innerText = "Hai beccato una bomba ! play per riavviare!";
+            alert("premere play per riavviare il gioco");
+            refreshPage();
         }
       }
     )
+
+    
 }
 
 
+/*--------------
+    FUNCTIONS
+----------------*/ 
 
-
-function clickOnTest(){
-	console.log('Click su test');
+// GENERA NUMERI RANDOMICI 
+function randomInteger(min,max){
+    return Math.floor(Math.random()* (max - min + 1)) +1 ;
 }
+function refreshPage() {
+    location.reload();
+}
+
+function level(){
+    let x = document.getElementById("level");
+    var y = x.selectedIndex;
+    console.log(y);
+    if (y === 0 ){
+        difficult = 100;
+    } else if ( y === 1){
+        difficult = 80;
+    } else {
+        difficult = 50; 
+    }
+}
+
